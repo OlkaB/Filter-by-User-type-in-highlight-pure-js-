@@ -9003,31 +9003,31 @@ var arrOfCities = [
 
 //console.table(arrOfCities);
 
-
-
 var inputField = document.getElementById("userChoice");
 inputField.addEventListener("keyup", highlightTxt);
 
 
 function getInputVal(){
-var userTypeIn = document.getElementById("userChoice").value;
+var userTypeIn = inputField.value;
 return userTypeIn;
 }
+//console.log(getInputVal());
 
-
-//console.table(filteredByUser);
 
 function filter(){
-	var userSearch = getInputVal();
-	var filteredByUser = arrOfCities.filter(function(item) {
-	return item.city.includes(userSearch);
+    console.log("works");
+  var userSearch = getInputVal();
+    var regExpFiltr = new RegExp(userSearch, 'gi');
+    var filteredByUser = arrOfCities.filter(function(item) {
+    return item.city.match(regExpFiltr);
 });
-	//console.table(filteredByUser);
-	return filteredByUser;
+    console.table(filteredByUser);
+    return filteredByUser;
 }
 
 
 function addListItem() {
+  console.log("works");
 var filtered = filter();
 var list = document.getElementById("sortedList");
 while(list.hasChildNodes())
@@ -9035,10 +9035,10 @@ while(list.hasChildNodes())
    list.removeChild(list.lastChild);
 }
 for (var i = 0; i<filtered.length; i++) {
-	var createLi = document.createElement('li');
-	var nodetxt = "city: " + filtered[i].city + ", state: " + filtered[i].state + ", population: " + filtered[i].population;
-	createLi.appendChild(document.createTextNode(nodetxt));
-	list.appendChild(createLi);
+    var createLi = document.createElement('li');
+    var nodetxt = "city: " + filtered[i].city + ", state: " + filtered[i].state + ", population: " + filtered[i].population;
+    createLi.appendChild(document.createTextNode(nodetxt));
+    list.appendChild(createLi);
 
 }
 }
@@ -9046,11 +9046,9 @@ for (var i = 0; i<filtered.length; i++) {
 function highlightTxt(){
     addListItem();
     var userSearch = getInputVal();
+    var regExpFiltr = new RegExp(userSearch, "gi");
     var allLi = document.getElementsByTagName('li');
     for (var i=0; i<allLi.length; i++){
-        allLi[i].innerHTML = allLi[i].innerHTML.replace(userSearch, "<mark>"+userSearch+"</mark>");
+        allLi[i].innerHTML = allLi[i].innerHTML.replace(regExpFiltr, "<mark>"+userSearch+"</mark>");
     }
 }
-
-
-// podświetlenie txtu: dodaj tag <mark> wokół tekstu do podświetlenia </mark>
