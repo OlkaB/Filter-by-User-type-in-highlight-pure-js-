@@ -1,0 +1,42 @@
+*{
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 18px;
+	text-align: center;
+}
+
+.filterContainer {
+	width: 60%;
+	margin: 50px auto 50px auto;
+	border: 1px solid grey;
+	min-height: 70px;
+	padding: 15px;
+	background-color: #cccccc;
+}
+
+input {
+	height: 50px;
+	width: 60%;
+	box-shadow: inset 1px 1px 1px rgba(100, 100, 100, .5);
+	padding: 10px;
+}
+
+label {
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin-right: 20px;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	text-align: left;
+}
+
+.span.highlited {
+	background-color: yellow;
+}
